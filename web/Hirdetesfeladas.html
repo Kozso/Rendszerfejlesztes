@@ -3,121 +3,215 @@
 <head>
   <meta charset="utf-8">
   <style>
-    .uploading {
-      display: none;
-    }
     #kulso{
       position: relative;
       top: 50px;
-      left: 250px;
+      left: 300px;
       width: 60%;
-      height: 300px;
+      height: 240px;
       border-radius: 8px;
       border: 1px solid #393939;
       background-color: #b4b4b4;
     }
     #select{
       position: absolute;
-      text-align: center;
-      left: 310px;
+      left: 380px;
       font-size: 25px;
-    }
-    #kep1, #kep2, #kep3{
-      border: 1px solid black;
-      position: relative;
-      width: 240px;
-      height: 200px;
+      font-weight: bold;
     }
     #kepek{
       position: relative;
       left: 12px;
       top: 10px;
     }
-    #kepkeret1, #kepkeret2, #kepkeret3{
+    #file1, #file2, #file3, #file4 {
+      background-color: #3f3f3f;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 8px;
       position: relative;
-      width: 238px;
-      height: 167px;
-      left: 2px;
-      top: -210px;
-
+      color: #c9c7c7;
     }
-    #kepkeret2{
-      left: 247px;
-      top: -377px;
+    #file1{
+      position: relative;
+      left: 80px;
+      top: 10px;
     }
-    #kepkeret3{
-      left: 494px;
-      top: -544px;
+    #file2{
+      position: relative;
+      left: 120px;
+      top: 10px;
     }
-    /*#kepkeret1:hover, #kepkeret2:hover, #kepkeret3:hover{
-      border-radius: 2px;
-      background-color: #cecece;
-    }*/
-<input type="file" class="custom-file-input">
-.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.custom-file-input::before {
-  content: 'Select some files';
-  display: inline-block;
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
-}
-.custom-file-input:hover::before {
-  border-color: black;
-}
-.custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
+    #file3{
+      position: relative;
+      left: 80px;
+      top: 40px;
+    }
+    #file4{
+      position: relative;
+      left: 120px;
+      top: 40px;
+    }
+    #nev, #ar{
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+    }
+    #nev{
+      left: 320px;
+    }
+    #ar{
+      left: 840px;
+      top: -55px;
+    }
+    #termek_nev{
+      width: 250px;
+      height: 30px;
+      font-size: 24px;
+      border: none;
+      background-color: #b4b4b4;
+    }
+    #termek_ar{
+      width: 180px;
+      height: 30px;
+      font-size: 24px;
+      border: none;
+      background-color: #b4b4b4;
+    }
+    #leiras{
+      position: absolute;
+      font-size: 24px;
+      font-weight: bold;
+      left: 320px;
+      top: 400px;
+    }
+    #szdoboz{
+      width: 550px;
+      height: 200px;
+      border: none;
+      font-size: 24px;
+      background-color: #b4b4b4;
+      resize: none;
+    }
+    #kat{
+      position: absolute;
+      left: 320px;
+      top: 681px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #kategoriak{
+      border: none;
+      position: absolute;
+      background-color: #b4b4b4;
+      font-size: 24px;
+      left: 520px;
+      top: 682px;
+    }
+    #ak{
+      position: absolute;
+      left: 320px;
+      top: 750px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #aukcio{
+      position: absolute;
+      left: 312px;
+      top: 770px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #show-me{
+      display: none;
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+    }
+    #kategoriak2{
+      border: none;
+      position: absolute;
+      background-color: #b4b4b4;
+      font-size: 24px;
+      left: 300px;
+      top: 50px;
+    }
+    #minosszeg{
+      width: 180px;
+      height: 30px;
+      font-size: 24px;
+      border: none;
+      background-color: #b4b4b4;
+      position: absolute;
+      left: 300px;
+      top: 170px;
+    }
+    #feladas {
+      background-color: #b4b4b4;
+      border: none;
+      color: black;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      position: absolute;
+      top: 850px;
+      left: 680px;
+    }
   </style>
+  <script>
+    function myFunction() {
+      var checkBox = document.getElementById("engedelyezes");
+      var mutat = document.getElementById("show-me");
+      if (checkBox.checked === true){
+        mutat.style.display = "block";
+        document.getElementById("ar").style.display="none";
+        document.getElementById("feladas").style.top="1150px";
+      } else {
+        mutat.style.display = "none";
+        document.getElementById("ar").style.display="block";
+      }
+    }
+  </script>
 </head>
+
+
 <body style="background-color: #424442">
 <div id="kulso">
   <h1><a></a></h1>
-  <label id="select">Select image:</label><br><br>
+  <label id="select">Képek feltöltése</label><br><br>
   <form id="kepek">
     <label class="file">
-  <input type="file" id="file1" aria-label="File browser example">
-  <span class="file-custom"></span>
-</label>
-  <label class="file">
-  <input type="file" id="file2" aria-label="File browser example">
-  <span class="file-custom"></span>
-</label>
-  <label class="file">
-  <input type="file" id="file3" aria-label="File browser example">
-  <span class="file-custom"></span>
-</label>
-
-    <div class="uploading">Uploading&hellip;</div>
+      <input type="file" id="file1">
+    </label>
+    <label class="file">
+      <input type="file" id="file2">
+    </label>
+    <label class="file">
+      <input type="file" id="file3">
+    </label>
+    <label class="file">
+      <input type="file" id="file4">
+    </label>
   </form>
 </div>
 
+<br><br><br><br>
+<label>
+  <p id="nev">Termék neve: <input type="text" id="termek_nev" maxlength="19"><br></p>
+  <p id="ar">Termék ára: <input type="number" id="termek_ar" maxlength="15"> Ft<br></p>
+  <p id="leiras">Termék leírása:<br> <textarea type="text" id="szdoboz"
+                                               placeholder="Rövid leírás. Hibái,színe,évjárata ,stb.. " maxlength="300"></textarea><br></p>
 
-  <div id="kulso">
-  
-  
-  Termék neve: <input type="text" name="termek_nev" size="10" maxlength="60"><br>
-  
-  Termék ára: <input type="text" name="termek_ar" size="10" maxlength="60">ft<br>
-  
-  
-  
-Termék leírása:<br> <textarea name="szdoboz" cols="60" rows="3">Mi a termék? Rövid leírás. Hibái,színe,évjárata ,stb.. </textarea><br>
-  <label for="kategoriak">Válassz kategóriát:</label>
+</label>
 
-
-
+<label id="kat" for="kategoriak">Válassz kategóriát:</label>
 <select id="kategoriak">
+  <option disabled selected>Kategóriák..</option>
   <option value="jarmuvek">Járművek</option>
   <option value="allatok">Állatok</option>
   <option value="hangszer">Hangszer</option>
@@ -125,14 +219,31 @@ Termék leírása:<br> <textarea name="szdoboz" cols="60" rows="3">Mi a termék?
   <option value="elektronikaieszkoz">Elektronikai eszköz</option>
 </select>
 
-  <p>Aukció:</p>
-  <input type="radio" id="engedelyezes" name="aukcio" value="engedelyezes">
-  <label for="male">Engedélyezés</label><br>
-  <input type="radio" id="tiltas" name="aukcio" value="tiltas">
-  <label for="female">Tiltás</label><br>
-<label>
-
-<button type="button" onclick="alert('A termék feltöltése megtörtént')">Feltöltés</button>
+<p id="ak">Aukció</p>
+<label id="aukcio"><br>
+<input type="checkbox" id="engedelyezes" name="aukcio" value="engedelyezes" onclick="myFunction()">
+<label>Engedélyezés</label><br>
+  <div id="show-me">
+    <label>
+      <p>Hány hetes legyen az aukció?</p>
+      <select id="kategoriak2">
+        <option selected, disabled>Válassz...</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </label>
+    <p>Adjon meg minimum összeget: </p>
+    <input type="number" id="minosszeg" maxlength="15">
   </div>
+  <br><br><br>
+</label>
 
+<button id="feladas">Hirdetésfeladás</button>
+<br><br><br>
 </body>
+
+</html>
+
+
+
