@@ -84,8 +84,10 @@ public class registrationServlet extends HttpServlet {
         String utca = request.getParameter("utca");
         String hazszam = request.getParameter("hazszam");
         String szul_dat = request.getParameter("szuldat");
-        String checkboxes = request.getParameter("checkboxes");
-        System.out.println("---"+ szul_dat);
+        String[] checkboxes = request.getParameterValues("checkboxes");
+//        String checkboxes = request.getParameter("checkboxes");
+        System.out.println(checkboxes);
+
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -94,7 +96,7 @@ public class registrationServlet extends HttpServlet {
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop_db", "root", "");
             System.out.println("Connection created");
 
-            PreparedStatement ps = con.prepareStatement("insert into felhasznalok(felh_nev, jelszo,vnev,knev ,email,tel_szam , varos , utca ,hazszam ,szuldat , checkboxes ) values (?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into felhasznalok(felh_nev, jelszo,vnev,knev ,email,tel_szam , varos , utca ,hazszam ,szuldat , kedvenc_kategoriak   ) values (?,?,?,?,?,?,?,?,?,?,?)");
             System.out.println("atment1");
 //            ResultSet rs = ps.getGeneratedKeys();
 //
@@ -115,10 +117,11 @@ public class registrationServlet extends HttpServlet {
             ps.setString(8, utca);
             ps.setString(9, hazszam);
             ps.setString(10, szul_dat);
-            ps.setString(11, checkboxes);
+            ps.set(11, checkboxes);
+            
             System.out.println("feltoltes elott");
 
-            ps.executeUpdate();
+            ps.execute();
             System.out.println("feltoltes megvolt");
 
             ps.close();
@@ -127,11 +130,13 @@ public class registrationServlet extends HttpServlet {
             out.close();
 
             System.out.println("Inserted");
+            request.getRequestDispatcher("index.jsp").include(request, response);
 
         } catch (Exception e1) {
 
             System.out.println(e1);
             System.err.println("Got an exception!");
+            
 
         }
 
