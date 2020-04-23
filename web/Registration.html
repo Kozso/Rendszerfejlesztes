@@ -72,49 +72,16 @@
       position: relative;
       bottom: 10px;
     }
-
-
-
-
     .multiselect {
       width: 200px;
     }
-
-    .selectBox {
-      position: relative;
-    }
-
-    .selectBox select {
-      width: 110%;
-      position: relative;
-      right: 13px;
-      padding: 5px 20px;
+    #kat{
       font-size: 18px;
-      font-weight: bold;
+      border: none;
+      width: 270px;
       background-color: #8c8c8c;
-      border: none;
     }
 
-    .overSelect {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
-
-    #checkboxes {
-      display: none;
-      border: none;
-    }
-
-    #checkboxes label {
-      display: block;
-    }
-
-    #checkboxes label:hover {
-      background-color: #e8e8e8;
-    }
 
   </style>
   <script>
@@ -136,16 +103,6 @@
     }
     var expanded = false;
 
-    function showCheckboxes() {
-      var checkboxes = document.getElementById("checkboxes");
-      if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-      } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-      }
-    }
   </script>
 </head>
 <body style="background-color: #555555">
@@ -219,28 +176,29 @@
 
     <form>
       <div id="choose" class="multiselect">
-        <div class="selectBox" onclick="showCheckboxes()">
-          <select>
-            <option selected>Kategóriák</option>
+          <select id="kat">
+            <option selected disabled>Kategóriák</option>
+            <option name="egy" id="kedvenc_kategoriak">egy</option>
+            <option name="ketto" id="kedvenc_kategoriak">ketto</option>
+            <option name="harom" id="kedvenc_kategoriak">harom</option>
+            <option name="negy" id="kedvenc_kategoriak">negy</option>
+            <option name="ot" id="kedvenc_kategoriak">ot</option>
+            <option name="hat" id="kedvenc_kategoriak">hat</option>
+            <option name="het" id="kedvenc_kategoriak">het</option>
           </select>
-          <div class="overSelect"></div>
         </div>
-        <div id="checkboxes">
-          <label>
-            <input type="checkbox" name="egy" id="kedvenc_kategoriak" />egy</label>
-          <label>
-            <input type="checkbox" name="ketto" id="kedvenc_kategoriak" />ketto</label>
-          <label>
-            <input type="checkbox" name="harom" id="kedvenc_kategoriak" />harom</label>
-          <label>
-            <input type="checkbox" name="negy" id="kedvenc_kategoriak" />negy</label>
-          <label >
-            <input type="checkbox" name="ot" id="kedvenc_kategoriak" />ot</label>
-          <label>
-            <input type="checkbox" name="hat" id="kedvenc_kategoriak" />hat</label>
-          <label>
-            <input type="checkbox" name="het" id="kedvenc_kategoriak" />het</label>
-        </div>
+      <br>
+      <div id="choose" class="multiselect">
+        <select id="kat">
+          <option selected disabled>Kategóriák</option>
+          <option name="egy" id="kedvenc_kategoriak">egy</option>
+          <option name="ketto" id="kedvenc_kategoriak">ketto</option>
+          <option name="harom" id="kedvenc_kategoriak">harom</option>
+          <option name="negy" id="kedvenc_kategoriak">negy</option>
+          <option name="ot" id="kedvenc_kategoriak">ot</option>
+          <option name="hat" id="kedvenc_kategoriak">hat</option>
+          <option name="het" id="kedvenc_kategoriak">het</option>
+        </select>
       </div>
     </form>
 
