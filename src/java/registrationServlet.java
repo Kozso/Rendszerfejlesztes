@@ -117,7 +117,7 @@ public class registrationServlet extends HttpServlet {
             ps.setString(8, utca);
             ps.setString(9, hazszam);
             ps.setString(10, szul_dat);
-            ps.set(11, checkboxes);
+       //     ps.setString(11, checkboxes);
             
             System.out.println("feltoltes elott");
 

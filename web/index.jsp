@@ -129,8 +129,8 @@
                 String username = (String) session.getAttribute("user");
                 if (username == null) {
             %>
-            <a href="LoginS.jsp"><input id="bt2" type="button" value="Belépés" onclick=""></a>
-            <a href="registration.jsp"><input id="bt3" type="button" value="Regisztráció" onclick=""></h1></a>
+            <a href="Login.html"><input id="bt2" type="button" value="Belépés" onclick=""></a>
+            <a href="registration.html"><input id="bt3" type="button" value="Regisztráció" onclick=""></h1></a>
                 <% } else {
                 %> <h1 id="belepve">Belepve: <%=username%></h1> <a href="LogOut"><input id="bt4" type="button" value="Kilepes" onclick=""></a>
                 <%  }%>
