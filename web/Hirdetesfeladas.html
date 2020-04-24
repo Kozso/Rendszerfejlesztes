@@ -162,6 +162,21 @@
       top: 850px;
       left: 680px;
     }
+    #all{
+      position: absolute;
+      left: 320px;
+      top: 730px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    #allapot{
+      border: none;
+      position: absolute;
+      background-color: #b4b4b4;
+      font-size: 24px;
+      left: 630px;
+      top: 730px;
+    }
   </style>
   <script>
     function myFunction() {
@@ -217,6 +232,15 @@
   <option value="hangszer">Hangszer</option>
   <option value="butor">Bútor</option>
   <option value="elektronikaieszkoz">Elektronikai eszköz</option>
+</select>
+
+<label id="all" for="allapot">Adja meg a termék állapotát:</label>
+<select id="allapot">
+  <option disabled selected>Állapot..</option>
+  <option value="ujszeru">Újszerű</option>
+  <option value="jo">Jó állapotú</option>
+  <option value="hasznalt">Használt</option>
+  <option value="serult">Sérült</option>
 </select>
 
 <p id="ak">Aukció</p>
