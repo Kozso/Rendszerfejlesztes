@@ -3,13 +3,10 @@
 <head>
   <meta charset="utf-8">
   <style>
-    .uploading {
-      display: none;
-    }
     #kulso{
       position: relative;
       top: 50px;
-      left: 250px;
+      left: 300px;
       width: 60%;
       height: 700px;
       border-radius: 8px;
@@ -18,141 +15,276 @@
     }
     #kosar{
       position: absolute;
-      text-align: center;
-      left: 310px;
+      left: 380px;
       font-size: 25px;
+      font-weight: bold;
     }
-	table {
-	width: 80%;
-	margin: 0;
-	background: #FFFFFF;
-	border: 1px solid #333333;
-	border-collapse: collapse;
-}
-td, th {
-	border-bottom: 1px solid #333333;
-	padding: 6px 16px;
-	text-align: left;
-}
+    table {
+      width: 80%;
+      margin: 0;
+      background: #e3e2e2;
+      border: 1px solid #333333;
+      border-collapse: collapse;
+    }
+    td, th {
+      border-bottom: 1px solid #333333;
+      padding: 6px 16px;
+      text-align: left;
+    }
 
-th {
-	background: #EEEEEE;
-}
+    th {
+      background: #EEEEEE;
+    }
+    table{
+      position: relative;
+      top: 40px;
+      left: 90px;
+    }
 
-caption {
-	background: #E0E0E0;
-	margin: 0;
-	border: 1px solid #333333;
-	border-bottom: none;
-	padding: 6px 16px;
-	font-weight: bold;
-}
-<input type="file" class="custom-file-input">
-.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.custom-file-input::before {
-  content: 'Select some files';
-  display: inline-block;
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
-}
-.custom-file-input:hover::before {
-  border-color: black;
-}
-.custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-h2 {
- 
-  font-size:20px
-}
-h3 {
- word-spacing: 3px;
-line-height: 15px;
-  font-size:16px
+    caption {
+      background: #E0E0E0;
+      margin: 0;
+      border: 1px solid #333333;
+      border-bottom: none;
+      padding: 6px 16px;
+      font-weight: bold;
+    }
 
-}
+    .custom-file-input::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+    .custom-file-input::before {
+      content: 'Select some files';
+      display: inline-block;
+      background: linear-gradient(top, #f9f9f9, #e3e3e3);
+      border: 1px solid #999;
+      border-radius: 3px;
+      padding: 5px 8px;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      cursor: pointer;
+      text-shadow: 1px 1px #fff;
+      font-weight: 700;
+      font-size: 10pt;
+    }
+    .custom-file-input:hover::before {
+      border-color: black;
+    }
+    .custom-file-input:active::before {
+      background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
+    h2 {
+
+      font-size:20px
+    }
+    h3 {
+      word-spacing: 3px;
+      line-height: 15px;
+      font-size:16px
+
+    }
+    #bt {
+      background-color: #3f3f3f;
+      border: none;
+      color: black;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      color: #d6d6d6;
+      position: absolute;
+      left: 40px;
+    }
+    #teljes_ar{
+      position: absolute;
+      left: 500px;
+    }
+    #ar{
+      position: absolute;
+      left: 115px;
+      top: 0px;
+    }
   </style>
+  <script>
+    function funFeltolt() {
+      document.getElementById("term5_kategoria").innerHTML="kat";
+      document.getElementById("term5_id").innerHTML='ID';
+      document.getElementById("term5_nev").innerHTML="nev";
+      var egy=document.getElementById("term5_ar").innerHTML=150;
+      document.getElementById("term4_kategoria").innerHTML="kat";
+      document.getElementById("term4_id").innerHTML='ID';
+      document.getElementById("term4_nev").innerHTML="nev";
+      var ketto=document.getElementById("term4_ar").innerHTML=1000;
+      document.getElementById("term3_kategoria").innerHTML="kat";
+      document.getElementById("term3_id").innerHTML='ID';
+      document.getElementById("term3_nev").innerHTML="nev";
+      var harom=document.getElementById("term3_ar").innerHTML=200;
+      document.getElementById("term2_kategoria").innerHTML="kat";
+      document.getElementById("term2_id").innerHTML='ID';
+      document.getElementById("term2_nev").innerHTML="nev";
+      var negy=document.getElementById("term2_ar").innerHTML=300;
+      document.getElementById("term1_kategoria").innerHTML="kat";
+      document.getElementById("term1_id").innerHTML='ID';
+      document.getElementById("term1_nev").innerHTML="nev";
+      var ot=document.getElementById("term1_ar").innerHTML=560;
+      document.getElementById("ar").innerHTML=egy+ketto+harom+negy+ot;
+    }
+
+    function funMegveszem() {
+      alert('Ön megvásárolta a terméket' );
+    }
+    function funTorles() {
+      /*if (document.getElementById("osszes").checked)
+      {
+        document.getElementById("aru1").checked = true;
+        document.getElementById("aru2").checked = true;
+        document.getElementById("aru3").checked = true;
+        document.getElementById("aru4").checked = true;
+        document.getElementById("aru5").checked = true;
+      }
+      <input type="checkbox" id="osszes" name="osszes" value="osszes">
+      */
+
+      if(document.getElementById("aru1").checked)
+      {
+        var kat = document.getElementById("term1_kategoria").innerHTML='';
+        var id = document.getElementById("term1_id").innerHTML='';
+        var nev = document.getElementById("term1_nev").innerHTML='';
+        var ar = document.getElementById("term1_ar").innerHTML='';
+        /*ar.remove(ar);
+        nev.remove(nev);
+        kat.remove(kat);*/
+        document.getElementById("aru1").checked = false;
+      }
+      if(document.getElementById("aru2").checked)
+      {
+        var kat = document.getElementById("term2_kategoria").innerHTML='';
+        var id = document.getElementById("term2_id").innerHTML='';
+        var nev = document.getElementById("term2_nev").innerHTML='';
+        var ar = document.getElementById("term2_ar").innerHTML='';
+        /*ar.remove(ar);
+        nev.remove(nev);
+        kat.remove(kat);*/
+        document.getElementById("aru2").checked = false;
+      }
+      if(document.getElementById("aru3").checked)
+      {
+        var kat = document.getElementById("term3_kategoria").innerHTML='';
+        var id = document.getElementById("term3_id").innerHTML='';
+        var nev = document.getElementById("term3_nev").innerHTML='';
+        var ar = document.getElementById("term3_ar").innerHTML='';
+        /*ar.remove(ar);
+        nev.remove(nev);
+        kat.remove(kat);*/
+        document.getElementById("aru3").checked = false;
+      }
+      if(document.getElementById("aru4").checked)
+      {
+        var kat = document.getElementById("term4_kategoria").innerHTML='';
+        var id = document.getElementById("term4_id").innerHTML='';
+        var nev = document.getElementById("term4_nev").innerHTML='';
+        var ar = document.getElementById("term4_ar").innerHTML='';
+        /*ar.remove(ar);
+        nev.remove(nev);
+        kat.remove(kat);*/
+        document.getElementById("aru4").checked = false;
+      }
+      if(document.getElementById("aru5").checked)
+      {
+        var kat = document.getElementById("term5_kategoria").innerHTML='';
+        var id = document.getElementById("term5_id").innerHTML='';
+        var nev = document.getElementById("term5_nev").innerHTML='';
+        var ar = document.getElementById("term5_ar").innerHTML='';
+        /*ar.remove(ar);
+        nev.remove(nev);
+        kat.remove(kat);*/
+        document.getElementById("aru5").checked = false;
+      }
+    }
+  </script>
 </head>
 <body style="background-color: #424442">
 <div id="kulso">
   <h1><a></a></h1>
   <label id="kosar">Kosár</label><br><br>
-  <h2>Itt látja a kosár jelenlegi adatait: <br>  </h2>
-  
-  
-  
+
+
+
+
   <table>
     <caption>Az ön kosrának tartalma:</caption>
     <tr>
-        <th>Sorszám</th>
-        <th>Termék neve</th>
-        <th>Kategóriája</th>
-        <th>Ára</th>
-		 <th>Kiválasztás</th>
+      <th>Sorszám</th>
+      <th>ID</th>
+      <th>Termék neve</th>
+      <th>Kategóriája</th>
+      <th>Ára</th>
+      <th>Kiválasztás</th>
     </tr>
     <tr>
-        <td>1</td>
-        <td><label id="term1_nev">Ping pong asztal</label></td>
-        <td><label id="term1_kategoria">Sport</label></td>
-        <td><label id="term1_ar">29000		</label></td>
-		<td><input type="checkbox" id="aru1" name="aru1" value="aru1"></td>
+      <td>1</td>
+      <td><label id="term1_id"></label></td>
+      <td><label id="term1_nev"></label></td>
+      <td><label id="term1_kategoria"></label></td>
+      <td><label id="term1_ar"></label></td>
+      <td><input type="checkbox" id="aru1" name="aru1" value="aru1"></td>
     </tr>
     <tr>
-        <td>2</td>
-		<td><label id="term2_nev">Bicikli</label></td>
-        <td><label id="term2_kategoria">Jármű</label></td>
-        <td><label id="term2_ar">79000</label></td>
-		<td><input type="checkbox" id="aru2" name="aru2" value="aru2"></td>
+      <td>2</td>
+      <td><label id="term2_id"></label></td>
+      <td><label id="term2_nev"></label></td>
+      <td><label id="term2_kategoria"></label></td>
+      <td><label id="term2_ar"></label></td>
+      <td><input type="checkbox" id="aru2" name="aru2" value="aru2"></td>
     </tr>
     <tr>
-        <td>3</td>
-         <td><label id="term3_nev">Kanapé</label></td>
-        <td><label id="term3_kategoria">Bútor</label></td>
-        <td><label id="term3_ar">140000</label></td>
-		<td><input type="checkbox" id="aru3" name="aru3" value="aru3"></td>
+      <td>3</td>
+      <td><label id="term3_id"></label></td>
+      <td><label id="term3_nev"></label></td>
+      <td><label id="term3_kategoria"></label></td>
+      <td><label id="term3_ar"></label></td>
+      <td><input type="checkbox" id="aru3" name="aru3" value="aru3"></td>
     </tr>
-	  <tr>
-        <td>4</td>
-         <td><label id="term4_nev">Laptop</label></td>
-        <td><label id="term4_kategoria">Elektronikai eszköz</label></td>
-        <td><label id="term4_ar">100000</label></td>
-		<td><input type="checkbox" id="aru4" name="aru4" value="aru4"></td>
+    <tr>
+      <td>4</td>
+      <td><label id="term4_id"></label></td>
+      <td><label id="term4_nev"></label></td>
+      <td><label id="term4_kategoria"></label></td>
+      <td><label id="term4_ar"></label></td>
+      <td><input type="checkbox" id="aru4" name="aru4" value="aru4"></td>
     </tr>
-	  <tr>
-        <td>5</td>
-         <td><label id="term5_nev">Gitár</label></td>
-        <td><label id="term5_kategoria">Hangszer</label></td>
-        <td><label id="term5_ar">70000</label></td>
-		<td><input type="checkbox" id="aru5" name="aru5" value="aru5"></td>
+    <tr>
+      <td>5</td>
+      <td><label id="term5_id"></label></td>
+      <td><label id="term5_nev"></label></td>
+      <td><label id="term5_kategoria"></label></td>
+      <td><label id="term5_ar"></label></td>
+      <td><input type="checkbox" id="aru5" name="aru5" value="aru5"></td>
     </tr>
-</table>
-  
-  
-   <h2>A Teljes ár: <br><label id="term5_ar">term1_ar.value+term2_ar.value+term3_ar.value+term4_ar.value+term5_ar.value</label></h2>
+  </table>
+  <br><br><br><br><br>
 
 
- 
- 
- <br><button title="A kiválasztott termék(ek) megvásárlásra kerülnek" type="button"  onclick="alert(Ön megvásárolta a terméket')">Megveszem</button>
-<br> <button title="A kiválasztott termék eltávolításra kerül" type="button" onclick="alert('A kiválasztott termék eltávolításra került' )">Termék eltávolítása a kosárból</button><br>
+
+
+  <h2 id="teljes_ar">A Teljes ár:<label id="ar"></label></h2>
+
+
+
+
+  <br><button title="A kiválasztott termék(ek) megvásárlásra kerülnek" type="button" id="bt" onclick="funMegveszem()">
+  Megveszem</button><br><br><br>
+
+  <br> <button title="A kiválasztott termék eltávolításra kerül" type="button" id="bt" onclick="funTorles()">
+  Termék eltávolítása a kosárból</button><br><br><br><br>
+  <input type="button" value="feltolt ideiglenes" id="bt" onclick="funFeltolt()">
 </div>
+
+
+
+<input type="file" class="custom-file-input">
 
 
 
