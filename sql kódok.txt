@@ -1,0 +1,79 @@
+keresésnél ha rákattint a "Submit" gombra-------------------------
+
+Select kep1, nev, kategoria, ar
+from termekek
+where nev = search and kategoria = searchtype
+
+
+
+hirdetésfeladás----------------------------------------------------
+
+insert into termekek(nev,kategoria,leiras,allapot,ar,kep1,kep2,kep3,kep4)
+values (termek_nev,kategoriak,szdoboz,allapot??,termek_ar,file1,file2,file3,file4)
+
+
+
+regisztráció--------------------------------------------------------
+
+insert into felhasznalok(felh_nev,jelszo,vnev,knev,email,tel_szam,varos,utca,hazszam,szuldat,kedvenc_kategoriak)
+values (felh_nev,jelszo,vnev,knev,email,tel_szam,varos,utca,hazszam,szuldat,kat)
+
+
+
+belépés---------------------------------------------------------------
+
+declare @id int;
+set @id = null
+
+select @id = felh_id
+from felhasznalok
+where felh_nev = document.getElementById("felh_nev") and jelszo = document.getElementById("jelszo")
+
+if @id not null
+begin
+	megnyitja az index_nyito.html-t
+end
+else
+begin
+	újra megnyitja a login.html-t
+end
+
+
+
+kosárba rak-------------------------------------
+
+declare @nev varchar(30), @kategoria varchar(30), @ar int
+
+select @nev = nev, @kategoria = kategoria, @ar = ar
+from termekek
+where nev = document.getElementById("termeknev")
+
+insert into kosar(??)
+values (@nev,@kategoria,@ar)
+
+
+
+kosárból töröl--------------------------------------
+delete from kosar
+where checkbox not null (valahogy meg kéne csinálni ilyesmire)
+
+
+
+kosár tartalmát megvesz-----------------------------
+declare @nev varchar(30)
+declare cursor_termek cursor for
+	select nev
+	from kosar
+open cursor_termek
+fetch next from cursor_termek into @nev
+while @@fetch_status = 0
+begin
+	delete from termekek
+	where termekek.nev=@nev
+	fetch next from cursor_termek into @nev
+end
+close cursor_termek
+deallocate cursor_termek
+
+delete from kosar
+where nev not null

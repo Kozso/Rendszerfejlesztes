@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <style>
+    .uploading {
+      display: none;
+    }
+    #kulso{
+      position: relative;
+      top: 50px;
+      left: 250px;
+      width: 60%;
+      height: 700px;
+      border-radius: 8px;
+      border: 1px solid #393939;
+      background-color: #b4b4b4;
+    }
+    #termeknev{
+      position: absolute;
+      text-align: center;
+      left: 310px;
+      font-size: 25px;
+    }
+<input type="file" class="custom-file-input">
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+h2 {
+ 
+  font-size:20px
+}
+h3 {
+ word-spacing: 2px;
+line-height: 15px;
+  font-size:12px
+
+}
+  </style>
+</head>
+<body style="background-color: #424442">
+<div id="kulso">
+  <h1><a></a></h1>
+  <label id="termeknev">Őrületes Bringagép</label><br><br>
+<img src="oruletes_bringagep.jpg" alt="Bicikli" title="Bicikli" class="center">
+
+  <h2><br>Ár: <label id="ar">50000</label>ft<br>  </h2>
+   <h2> Kategoria: <label id="kategoria">Járművek</label><br></h2>
+  <h3><br> Leírasras: <br><label id="leiras">Eladó egy Őrületes bringagép, acélvázas országúti kerékpár, keveset használt-megkímélt, a képeken látható állapotú. 
+  Felszereltsége: 3x7 sebességes Shimano váltás(pozícionált), rejtett bowdenes fékkarok, 
+  Mavic kerekek(peremes, nem szingós) Continental gumikkal, kulacstartó, alu-kormány-stucni-nyeregcső-hajtómű.</label><br></h3>
+ 
+ <br><button title="Licitálok a termékre" type="button"  onclick="alert('A termékre való licitálás megtörtént')">Licitálás</button><br>
+<br> <button title="Kosárba vele" type="button" onclick="alert('A terméket a kosárba helyezte' )">Kosárba</button><br>
+</div>
+
+
+
+
+</body>
