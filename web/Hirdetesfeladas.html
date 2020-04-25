@@ -196,36 +196,37 @@
 
 
 <body style="background-color: #424442">
+<form action="hirdetesFeladasServlet" method="POST">
 <div id="kulso">
   <h1><a></a></h1>
   <label id="select">Képek feltöltése</label><br><br>
   <form id="kepek">
     <label class="file">
-      <input type="file" id="file1">
+      <input name="file1" type="file" id="file1">
     </label>
     <label class="file">
-      <input type="file" id="file2">
+      <input name="file2" type="file" id="file2">
     </label>
     <label class="file">
-      <input type="file" id="file3">
+      <input name="file3" type="file" id="file3">
     </label>
     <label class="file">
-      <input type="file" id="file4">
+      <input name="file4" type="file" id="file4">
     </label>
   </form>
 </div>
 
 <br><br><br><br>
 <label>
-  <p id="nev">Termék neve: <input type="text" id="termek_nev" maxlength="19"><br></p>
-  <p id="ar">Termék ára: <input type="number" id="termek_ar" maxlength="15"> Ft<br></p>
-  <p id="leiras">Termék leírása:<br> <textarea type="text" id="szdoboz"
+  <p id="nev">Termék neve: <input name="nev" type="text" id="termek_nev" maxlength="19"><br></p>
+  <p id="ar">Termék ára: <input name="termek_ar" type="number" id="termek_ar" maxlength="15"> Ft<br></p>
+  <p id="leiras">Termék leírása:<br> <textarea name="leiras" type="text" id="szdoboz"
                                                placeholder="Rövid leírás. Hibái,színe,évjárata ,stb.. " maxlength="300"></textarea><br></p>
 
 </label>
 
 <label id="kat" for="kategoriak">Válassz kategóriát:</label>
-<select id="kategoriak">
+<select name="kategoria" id="kategoriak">
   <option disabled selected>Kategóriák..</option>
   <option value="jarmuvek">Járművek</option>
   <option value="allatok">Állatok</option>
@@ -235,7 +236,7 @@
 </select>
 
 <label id="all" for="allapot">Adja meg a termék állapotát:</label>
-<select id="allapot">
+<select name="allapot" id="allapot">
   <option disabled selected>Állapot..</option>
   <option value="ujszeru">Újszerű</option>
   <option value="jo">Jó állapotú</option>
@@ -250,7 +251,7 @@
   <div id="show-me">
     <label>
       <p>Hány hetes legyen az aukció?</p>
-      <select id="kategoriak2">
+      <select name="aukcio" id="kategoriak2">
         <option disabled selected>Válassz...</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -258,13 +259,14 @@
       </select>
     </label>
     <p>Adjon meg minimum összeget: </p>
-    <input type="number" id="minosszeg" maxlength="15">
+    <input name="min_osszeg" type="number" id="minosszeg" maxlength="15">
   </div>
   <br><br><br>
 </label>
 
-<button id="feladas">Hirdetésfeladás</button>
+<button id="feladas" type="submit">Hirdetésfeladás</button>
 <br><br><br>
+</form>
 </body>
 
 </html>
