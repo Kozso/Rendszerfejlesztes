@@ -52,7 +52,7 @@ CREATE TABLE `felhasznalok` (
   `utca` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
   `hazszam` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
   `szuldat` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `kedvenc_kategoriak` varchar(30) COLLATE utf8_hungarian_ci 
+  `kedvenc_kategoriak` varchar(30) COLLATE utf8_hungarian_ci,
   `kedvenc_kategoriak_2` varchar(30) COLLATE utf8_hungarian_ci 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
