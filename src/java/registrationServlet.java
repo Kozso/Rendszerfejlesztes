@@ -73,7 +73,8 @@ public class registrationServlet extends HttpServlet {
         System.out.println("Dopost kezdes");
         response.setContentType("text/html");
         
-        RequestDispatcher dispatcher;
+        
+        
 
         
         PrintWriter out = response.getWriter();
@@ -94,6 +95,7 @@ public class registrationServlet extends HttpServlet {
 
 
         try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver is loaded");
 
@@ -119,15 +121,18 @@ public class registrationServlet extends HttpServlet {
             
             System.out.println("feltoltes elott");
 
-//            ps.execute();
+            ps.execute();
             System.out.println("ps.Execute OK");
 
-            ps.close();
-            con.close();
+            
             System.out.println("Zárva a connection és a ps");
-            out.close();
-
+            
+            dispatcher.forward(request, response);
             System.out.println("Inserted");
+            ps.close();
+            out.close();
+            con.close();
+            
 
         } catch (Exception e1) {
             System.err.println("Got an exception!");
