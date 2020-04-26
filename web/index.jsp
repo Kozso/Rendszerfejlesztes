@@ -123,7 +123,7 @@
 
     <body style="background-color: #555555" onload="reload()">
         <h1>4-es csapat WEBSHOP
-            <input id="bt1" type="button" value="Hirdetésfeladás" onclick="">
+            <a href="Hirdetesfeladas.html"><input id="bt1" type="button" value="Hirdetésfeladás" onclick=""></a>
             <%
 
                 String username = (String) session.getAttribute("user");

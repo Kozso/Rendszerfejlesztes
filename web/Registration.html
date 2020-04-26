@@ -81,6 +81,12 @@
       width: 270px;
       background-color: #8c8c8c;
     }
+    #kat2{
+      font-size: 18px;
+      border: none;
+      width: 270px;
+      background-color: #8c8c8c;
+    }
 
 
   </style>
@@ -106,29 +112,29 @@
   </script>
 </head>
 <body style="background-color: #555555">
-<form action="LoginServlet" method="POST">
+<form action="registrationServlet" method="POST">
 
   <div class="container">
     <h2 style="text-align: center">Regisztráció</h2>
     <br>
     <label><b id="vezeteknev">Vezetéknév:</b></label>
     <br>
-    <input id="vnev" type="text" placeholder="Adja meg a vezetéknevét !" required>
+    <input name="vnev" id="vnev" type="text" placeholder="Adja meg a vezetéknevét !" required>
     <br><br>
 
     <label><b id="keresztnev">Keresztnév:</b></label>
     <br>
-    <input id="knev" type="text" placeholder="Adja meg a keresztnevét !" required>
+    <input name="knev" id="knev" type="text" placeholder="Adja meg a keresztnevét !" required>
     <br><br>
 
     <label><b id="fnev">Felhasználónév:</b></label>
     <br>
-    <input id="felh_nev" type="text" placeholder="Adja meg a felhasználónevét !" required>
+    <input name="felh_nev" id="felh_nev" type="text" placeholder="Adja meg a felhasználónevét !" required>
     <br><br>
 
     <label><b id="jelsz">Jelszó:</b></label>
     <br>
-    <input id="jelszo" type="password" placeholder="Adja meg a jelszavát !" required>
+    <input name="jelszo" id="jelszo" type="password" placeholder="Adja meg a jelszavát !" required>
     <input id="hatter" disabled>
     <input id="showhide" type="checkbox" onclick="myFunction()">
     <br><br>
@@ -142,32 +148,32 @@
 
     <label><b id="emailinput">Email:</b></label>
     <br>
-    <input id="email" type="text" placeholder="Adja meg az email címét !" required>
+    <input name="email" id="email" type="text" placeholder="Adja meg az email címét !" required>
     <br><br>
 
     <label><b id="tel">Telefonszám:</b></label>
     <br>
-    <input id="tel_szam" type="text" placeholder="Adja meg a telefonszámát !" required>
+    <input name="tel_szam" id="tel_szam" type="text" placeholder="Adja meg a telefonszámát !" required>
     <br><br>
 
     <label><b id="city">Lakhely(Város):</b></label>
     <br>
-    <input id="varos" type="text" placeholder="Adja meg a lakhelyét !" required>
+    <input name="varos" id="varos" type="text" placeholder="Adja meg a lakhelyét !" required>
     <br><br>
 
     <label><b id="street">Lakhely(Utca):</b></label>
     <br>
-    <input id="utca" type="text" placeholder="Adja meg a lakhelyét !" required>
+    <input name="utca" id="utca" type="text" placeholder="Adja meg a lakhelyét !" required>
     <br><br>
 
     <label><b id="szam">Lakhely(Házszám/Emelet/Ajtó):</b></label>
     <br>
-    <input id="hazszam" type="text" placeholder="Adja meg a lakhelyét !" required>
+    <input name="hazszam" id="hazszam" type="text" placeholder="Adja meg a lakhelyét !" required>
     <br><br>
 
     <label><b id="birth">Szuletési idő:</b></label>
     <br>
-    <input type="date" id="szuldat" name="trip-start" value="2018-07-22"
+    <input name="szuldat" type="date" id="szuldat" name="trip-start" value="2018-07-22"
            min="1900-01-01" max=Date();>
     <br><br>
 
@@ -176,10 +182,10 @@
 
 
       <div id="choose" class="multiselect">
-          <select id="kat">
+          <select name="kat1" id="kat">
             <option selected disabled>Kategóriák</option>
             <option name="egy" id="kedvenc_kategoriak">egy</option>
-            <option name="ketto" id="kedvenc_kategoriak">ketto</option>
+            <option  name="ketto" id="kedvenc_kategoriak">ketto</option>
             <option name="harom" id="kedvenc_kategoriak">harom</option>
             <option name="negy" id="kedvenc_kategoriak">negy</option>
             <option name="ot" id="kedvenc_kategoriak">ot</option>
@@ -189,7 +195,7 @@
         </div>
       <br>
       <div id="choose" class="multiselect">
-        <select id="kat">
+        <select name="kat2" id="kat2">
           <option selected disabled>Kategóriák</option>
           <option name="egy" id="kedvenc_kategoriak">egy</option>
           <option name="ketto" id="kedvenc_kategoriak">ketto</option>

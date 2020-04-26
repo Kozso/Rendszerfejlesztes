@@ -70,7 +70,9 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String username = request.getParameter("felh_nev");
         String jelszo = request.getParameter("jelszo");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        
+        RequestDispatcher dispatcher_OK = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher_NOT_OK = request.getRequestDispatcher("/Login.html");
 
 //        String username= "napocska";
 //        String jelszo = "123";
@@ -78,15 +80,14 @@ public class LoginServlet extends HttpServlet {
 
             if (AuthHelper.validate(username, jelszo)) {
                 session.setAttribute("user", username);
-                dispatcher.forward(request, response);
+                dispatcher_OK.forward(request, response);
 
             } else {
                 session.setAttribute("user", username);
-
-                out.print("Sorry username or password error");
+                out.print("<h1 style: text-align: center>Sorry username or password error</h1>");
                 out.print(username + "" + jelszo);
-                RequestDispatcher rd = request.getRequestDispatcher("Login.html");
-                rd.include(request, response);
+                
+                dispatcher_NOT_OK.include(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();

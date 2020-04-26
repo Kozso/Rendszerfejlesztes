@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import com.sun.xml.rpc.wsdl.document.schema.BuiltInTypes;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,14 +20,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 /**
  *
  * @author gazda
  */
-@WebServlet(urlPatterns = {"/registrationServlet"})
-public class registrationServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/hirdetesFeladasServlet"})
+public class hirdetesFeladasServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -75,46 +74,42 @@ public class registrationServlet extends HttpServlet {
 
         
         PrintWriter out = response.getWriter();
-        String felh_nev = request.getParameter("felh_nev");
-        String jelszo = request.getParameter("jelszo");
-        String nev1 = request.getParameter("vnev");
-        String nev2 = request.getParameter("knev");
-        String email = request.getParameter("email");
-        String tel_szam = request.getParameter("tel_szam");
-        String varos = request.getParameter("varos");
-        String utca = request.getParameter("utca");
-        String hazszam = request.getParameter("hazszam");
-        String szul_dat = request.getParameter("szuldat");
-   //     String[] checkboxes = request.getParameterValues("checkboxes");
-        String kat1 = request.getParameter("kat1");
-        String kat2 = request.getParameter("kat2");
+        String file1 = request.getParameter("file1");
+        String file2 = request.getParameter("file2");
+        String file3 = request.getParameter("file3");
+        String file4 = request.getParameter("file4");
+        String nev = request.getParameter("nev");
+        int termek_ar = Integer.parseInt(request.getParameter("termek_ar"));
+        String leiras = request.getParameter("leiras");
+        String kat = request.getParameter("kategoria");
+        String allapot = request.getParameter("allapot");
+        String aukcio_idotartam = request.getParameter("aukcio_idotartam");
+        String min_osszeg = request.getParameter("min_osszeg");
 
-
+        RequestDispatcher dispatcher_OK = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher_NOT_OK = request.getRequestDispatcher("/hirdetesFeladasServlet.java");
 
         try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver is loaded");
 
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop_db", "root", "");
             System.out.println("Connection created");
 
-            PreparedStatement ps = con.prepareStatement("insert into felhasznalok(felh_nev, jelszo,vnev,knev ,email,tel_szam , varos , utca ,hazszam ,szuldat , kedvenc_kategoriak , kedvenc_kategoriak_2   ) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into termekek(nev, kategoria,leiras,allapot ,ar,kep1 , kep2 , kep3 ,kep4,felh_id ) values (?,?,?,?,?,?,?,?,?,1)");
             System.out.println("PrepareStatement OK");
 
             
-            ps.setString(1, felh_nev);
-            ps.setString(2, jelszo);
-            ps.setString(3, nev1);
-            ps.setString(4, nev2);
-            ps.setString(5, email);
-            ps.setString(6, tel_szam);
-            ps.setString(7, varos);
-            ps.setString(8, utca);
-            ps.setString(9, hazszam);
-            ps.setString(10, szul_dat);
-            ps.setString(11, kat1);
-            ps.setString(12, kat2);
+            ps.setString(1, nev);
+            ps.setString(2, kat);
+            ps.setString(3, leiras);
+            ps.setString(4, allapot);
+            ps.setInt(5, termek_ar);
+            ps.setString(6, file1);
+            ps.setString(7, file2);
+            ps.setString(8, file3);
+            ps.setString(9, file4);
             
             System.out.println("feltoltes elott");
 
@@ -124,16 +119,18 @@ public class registrationServlet extends HttpServlet {
             
             System.out.println("Zárva a connection és a ps");
             
-            dispatcher.forward(request, response);
+            dispatcher_OK.forward(request, response);
             System.out.println("Inserted");
+            //Feltoltés sikeres html kodot 
             ps.close();
             out.close();
             con.close();
             
-
+            
         } catch (Exception e1) {
             System.err.println("Got an exception!");
             System.out.println(e1);
+            dispatcher_NOT_OK.forward(request, response);
         }
 
        
