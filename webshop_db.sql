@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Ápr 21. 16:30
+-- Létrehozás ideje: 2020. Ápr 25. 19:30
 -- Kiszolgáló verziója: 10.4.11-MariaDB
 -- PHP verzió: 7.2.29
 
@@ -30,8 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `adminok` (
   `felh_id` int(10) UNSIGNED NOT NULL,
   `felh_nev` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `jelszo` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `termek_id` int(10) UNSIGNED NOT NULL
+  `jelszo` varchar(30) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -50,9 +49,10 @@ CREATE TABLE `felhasznalok` (
   `tel_szam` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
   `varos` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
   `utca` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `hazszam` int(11) NOT NULL,
-  `szuldat` date NOT NULL,
-  `kedvenc_kategoriak` varchar(30) COLLATE utf8_hungarian_ci NOT NULL
+  `hazszam` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `szuldat` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `kedvenc_kategoriak` varchar(30) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `kedvenc_kategoriak_2` varchar(30) COLLATE utf8_hungarian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -63,10 +63,22 @@ CREATE TABLE `felhasznalok` (
 
 CREATE TABLE `kosar` (
   `kosar_id` int(10) UNSIGNED NOT NULL,
-  `felh_id` int(10) UNSIGNED NOT NULL,
+  `felh_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `kosar_tartalom`
+--
+
+CREATE TABLE `kosar_tartalom` (
+  `kosar_id` int(10) UNSIGNED NOT NULL,
   `termek_id` int(10) UNSIGNED NOT NULL,
-  `tarolt_termekek` varchar(500) COLLATE utf8_hungarian_ci NOT NULL,
-  `vegosszeg` int(11) NOT NULL
+  `termek_nev` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `termek_kategoria` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `termek_ar` int(10) UNSIGNED NOT NULL,
+  `vegosszeg` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -100,7 +112,8 @@ CREATE TABLE `termekek` (
   `kep1` mediumblob NOT NULL,
   `kep2` mediumblob NOT NULL,
   `kep3` mediumblob NOT NULL,
-  `kep4` mediumblob NOT NULL
+  `kep4` mediumblob NOT NULL,
+  `felh_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -122,8 +135,7 @@ CREATE TABLE `vasarlas` (
 -- A tábla indexei `adminok`
 --
 ALTER TABLE `adminok`
-  ADD KEY `felh_id` (`felh_id`),
-  ADD KEY `termek_id` (`termek_id`);
+  ADD KEY `felh_id` (`felh_id`);
 
 --
 -- A tábla indexei `felhasznalok`
@@ -136,8 +148,13 @@ ALTER TABLE `felhasznalok`
 --
 ALTER TABLE `kosar`
   ADD PRIMARY KEY (`kosar_id`),
-  ADD KEY `felh_id` (`felh_id`),
-  ADD KEY `termek_id` (`termek_id`);
+  ADD KEY `felh_id` (`felh_id`);
+
+--
+-- A tábla indexei `kosar_tartalom`
+--
+ALTER TABLE `kosar_tartalom`
+  ADD KEY `kosar_id` (`kosar_id`);
 
 --
 -- A tábla indexei `licitek`
@@ -151,7 +168,8 @@ ALTER TABLE `licitek`
 --
 ALTER TABLE `termekek`
   ADD PRIMARY KEY (`termek_id`),
-  ADD KEY `licit_id` (`licit_id`);
+  ADD KEY `licit_id` (`licit_id`),
+  ADD KEY `felh_id` (`felh_id`);
 
 --
 -- A tábla indexei `vasarlas`
@@ -195,15 +213,19 @@ ALTER TABLE `termekek`
 -- Megkötések a táblához `adminok`
 --
 ALTER TABLE `adminok`
-  ADD CONSTRAINT `fk6` FOREIGN KEY (`felh_id`) REFERENCES `felhasznalok` (`felh_id`),
-  ADD CONSTRAINT `fk7` FOREIGN KEY (`termek_id`) REFERENCES `termekek` (`termek_id`);
+  ADD CONSTRAINT `fk6` FOREIGN KEY (`felh_id`) REFERENCES `felhasznalok` (`felh_id`);
 
 --
 -- Megkötések a táblához `kosar`
 --
 ALTER TABLE `kosar`
-  ADD CONSTRAINT `fk` FOREIGN KEY (`felh_id`) REFERENCES `felhasznalok` (`felh_id`),
-  ADD CONSTRAINT `fk_2` FOREIGN KEY (`termek_id`) REFERENCES `termekek` (`termek_id`);
+  ADD CONSTRAINT `fk` FOREIGN KEY (`felh_id`) REFERENCES `felhasznalok` (`felh_id`);
+
+--
+-- Megkötések a táblához `kosar_tartalom`
+--
+ALTER TABLE `kosar_tartalom`
+  ADD CONSTRAINT `kosar_tartalom_ibfk_1` FOREIGN KEY (`kosar_id`) REFERENCES `kosar` (`kosar_id`);
 
 --
 -- Megkötések a táblához `licitek`
