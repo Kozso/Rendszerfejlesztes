@@ -174,6 +174,12 @@ ALTER TABLE `kosar`
 --
 ALTER TABLE `termekek`
   MODIFY `termek_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  
+--
+-- AUTO_INCREMENT a táblához `kosar`
+--
+ALTER TABLE `kosar_tartalom`
+  MODIFY `kosar_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Megkötések a kiírt táblákhoz
