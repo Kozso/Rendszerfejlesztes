@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Ápr 25. 19:30
+-- Létrehozás ideje: 2020. Máj 26. 18:18
 -- Kiszolgáló verziója: 10.4.11-MariaDB
 -- PHP verzió: 7.2.29
 
@@ -84,20 +84,6 @@ CREATE TABLE `kosar_tartalom` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `licitek`
---
-
-CREATE TABLE `licitek` (
-  `termek_id` int(10) UNSIGNED NOT NULL,
-  `min_ar` int(10) UNSIGNED NOT NULL,
-  `akt_licit_ar` int(10) UNSIGNED NOT NULL,
-  `licit_id` int(10) UNSIGNED NOT NULL,
-  `idotartam` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
--- --------------------------------------------------------
-
---
 -- Tábla szerkezet ehhez a táblához `termekek`
 --
 
@@ -108,7 +94,6 @@ CREATE TABLE `termekek` (
   `leiras` varchar(200) COLLATE utf8_hungarian_ci NOT NULL,
   `allapot` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   `ar` int(10) UNSIGNED NOT NULL,
-  `licit_id` int(10) UNSIGNED NOT NULL,
   `kep1` mediumblob NOT NULL,
   `kep2` mediumblob NOT NULL,
   `kep3` mediumblob NOT NULL,
@@ -157,18 +142,10 @@ ALTER TABLE `kosar_tartalom`
   ADD KEY `kosar_id` (`kosar_id`);
 
 --
--- A tábla indexei `licitek`
---
-ALTER TABLE `licitek`
-  ADD PRIMARY KEY (`licit_id`),
-  ADD KEY `termek_id` (`termek_id`);
-
---
 -- A tábla indexei `termekek`
 --
 ALTER TABLE `termekek`
   ADD PRIMARY KEY (`termek_id`),
-  ADD KEY `licit_id` (`licit_id`),
   ADD KEY `felh_id` (`felh_id`);
 
 --
@@ -192,12 +169,6 @@ ALTER TABLE `felhasznalok`
 --
 ALTER TABLE `kosar`
   MODIFY `kosar_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT a táblához `licitek`
---
-ALTER TABLE `licitek`
-  MODIFY `licit_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `termekek`
@@ -226,18 +197,6 @@ ALTER TABLE `kosar`
 --
 ALTER TABLE `kosar_tartalom`
   ADD CONSTRAINT `kosar_tartalom_ibfk_1` FOREIGN KEY (`kosar_id`) REFERENCES `kosar` (`kosar_id`);
-
---
--- Megkötések a táblához `licitek`
---
-ALTER TABLE `licitek`
-  ADD CONSTRAINT `fk5` FOREIGN KEY (`termek_id`) REFERENCES `termekek` (`termek_id`);
-
---
--- Megkötések a táblához `termekek`
---
-ALTER TABLE `termekek`
-  ADD CONSTRAINT `fk3` FOREIGN KEY (`licit_id`) REFERENCES `licitek` (`licit_id`);
 
 --
 -- Megkötések a táblához `vasarlas`
