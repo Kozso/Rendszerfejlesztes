@@ -77,8 +77,7 @@ CREATE TABLE `kosar_tartalom` (
   `termek_id` int(10) UNSIGNED NOT NULL,
   `termek_nev` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
   `termek_kategoria` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
-  `termek_ar` int(10) UNSIGNED NOT NULL,
-  `vegosszeg` int(10) UNSIGNED NOT NULL
+  `termek_ar` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
