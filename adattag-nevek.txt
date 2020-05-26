@@ -17,6 +17,7 @@ felhasznalok
 -hazszam
 -szuldat
 -kedvenc_kategoriak
+-kedvenc_kategoriak_2
 
 kosar
 -kosar_id
