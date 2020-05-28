@@ -71,19 +71,21 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("felh_nev");
         String jelszo = request.getParameter("jelszo");
         
+        
         RequestDispatcher dispatcher_OK = request.getRequestDispatcher("/index.jsp");
         RequestDispatcher dispatcher_NOT_OK = request.getRequestDispatcher("/Login.html");
 
 //        String username= "napocska";
 //        String jelszo = "123";
         try {
-
-            if (AuthHelper.validate(username, jelszo)) {
+            int user_id = AuthHelper.validate(username, jelszo);
+            if (user_id!=0) {
                 session.setAttribute("user", username);
+                session.setAttribute("user_id", user_id+"");
                 dispatcher_OK.forward(request, response);
 
             } else {
-                session.setAttribute("user", username);
+//                session.setAttribute("user", username);
                 out.print("<h1 style: text-align: center>Sorry username or password error</h1>");
                 out.print(username + "" + jelszo);
                 
