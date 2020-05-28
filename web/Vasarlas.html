@@ -1,126 +1,87 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <meta charset="UTF-8">
-    <title>Vasarlas</title>
-    <style>
-        #kulso{
-            position: relative;
-            top: 50px;
-            left: 300px;
-            width: 60%;
-            height: 1800px;
-            border-radius: 8px;
-            border: 1px solid #393939;
-            background-color: #b4b4b4;
-        }
-        #kosarba {
-            background-color: #3f3f3f;
-            border: none;
-            color: black;
-            padding: 10px 20px;
-            text-align: center;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 8px;
-            color: #d6d6d6;
-            position: fixed;
-            right: 350px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <style>
+    .uploading {
+      display: none;
+    }
+    #kulso{
+      position: relative;
+      top: 50px;
+      left: 250px;
+      width: 60%;
+      height: 700px;
+      border-radius: 8px;
+      border: 1px solid #393939;
+      background-color: #b4b4b4;
+    }
+    #termeknev{
+      position: absolute;
+      text-align: center;
+      left: 310px;
+      font-size: 25px;
+    }
+/*<input type="file" class="custom-file-input">*/
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+h2 {
+ 
+  font-size:20px
+}
+h3 {
+ word-spacing: 2px;
+line-height: 15px;
+  font-size:12px
+
+}
+  </style>
 </head>
 <body style="background-color: #424442">
-    <div id="kulso">
-        <h1 id="nev" style="text-align: center;top: 15px">Termek neve</h1><br>
+<div id="kulso">
+  <h1><a></a></h1>
+  <label id="termeknev">Őrületes Bringagép</label><br><br>
+<img src="oruletes_bringagep.jpg" alt="Bicikli" title="Bicikli" class="center">
 
-        <div class="w3-content" style="max-width:700px">
-            <img id="kep1" class="mySlides" src="uploads/G0014904.JPG"
-                 style="width:60%;position: absolute;left: 180px">
-            <img id="kep2" class="mySlides" src="uploads/G0014905.JPG"
-                 style="width:60%;display:none;position: absolute;left: 180px">
-            <img  id="kep3" class="mySlides" src="uploads/G0014906.JPG"
-                 style="width:60%;display:none;position: absolute;left: 180px">
-            <img  id="kep4" class="mySlides" src="uploads/G0014906.JPG"
-                 style="width:60%;display:none;position: absolute;left: 180px">
-
-            <div class="w3-row-padding w3-section">
-                <div class="w3-col s4">
-                    <img id="kep1" class="demo w3-opacity w3-hover-opacity-off" src="uploads/G0014904.JPG"
-                         style="width:12%;cursor:pointer;position: absolute;top: 540px;left: 180px" onclick="currentDiv(1)">
-                </div>
-                <div class="w3-col s4">
-                    <img id="kep2" class="demo w3-opacity w3-hover-opacity-off" src="uploads/G0014905.JPG"
-                         style="width:12%;cursor:pointer;position: absolute;top: 540px;left: 330px" onclick="currentDiv(2)">
-                </div>
-                <div class="w3-col s4">
-                    <img  id="kep3" class="demo w3-opacity w3-hover-opacity-off" src="uploads/G0014906.JPG"
-                         style="width:12%;cursor:pointer;position: absolute;top: 540px;left: 470px" onclick="currentDiv(3)">
-                </div>
-                <div class="w3-col s4">
-                    <img  id="kep4" class="demo w3-opacity w3-hover-opacity-off" src="uploads/G0014906.JPG"
-                         style="width:12%;cursor:pointer;position: absolute;top: 540px;left: 618px" onclick="currentDiv(4)">
-                </div>
-            </div>
-        </div>
-        <script>
-            function currentDiv(n) {
-                showDivs(slideIndex = n);
-            }
-            function showDivs(n) {
-                var i;
-                var x = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("demo");
-                if (n > x.length) {slideIndex = 1}
-                if (n < 1) {slideIndex = x.length}
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-                }
-                x[slideIndex-1].style.display = "block";
-                dots[slideIndex-1].className += " w3-opacity-off";
-            }
-        </script>
-        <div>
-            <h1 style="position:absolute;top: 660px;left: 120px">Ar:</h1>
-            <h2 id="ar" style="position:absolute;top: 665px;left: 180px">123123123 Ft</h2>
-        </div>
-        <div>
-            <h1 style="position:absolute;top: 750px;left: 120px">Tulajdonsagok: </h1>
-            <h2 style="position:absolute;top: 810px;left: 120px">Helyeg: </h2>
-                <h3 id="varos" style="position:absolute;top: 815px;left: 230px">Varos</h3>
-            <h2 style="position:absolute;top: 855px;left: 120px">Allapot: </h2>
-                <h3 id="allapot" style="position:absolute;top: 860px;left: 230px">Allapot</h3>
-            <h2 style="position:absolute;top: 900px;left: 120px">Kategoria: </h2>
-                <h3 id="kategoria" style="position:absolute;top: 905px;left: 265px">Kategoria</h3>
-            <h2 style="position:absolute;top: 945px;left: 120px">Felado neve: </h2>
-                <h3 id="knev" style="position:absolute;top: 951px;left: 300px">Andras</h3>
-            <h2 style="position:absolute;top: 990px;left: 120px">Felado telefonszama: </h2>
-                <h3 id="tel_szam" style="position:absolute;top: 998px;left: 415px">06204050626</h3>
-        </div>
-        <div>
-            <h1 style="position:absolute;top: 1080px;left: 120px">Leiras: </h1>
-            <textarea id="leiras" disabled readonly style="position:absolute;
-            top: 1170px;left: 120px;resize: none;width: 500px;height: 400px;background-color: #b4b4b4;color: black;border: none">
-                asddddddddssssssssssssssssssssssssssssssssssssssssssssssssssss</textarea>
-        </div>
-        <div>
-            <button type="submit" id="kosarba">Kosarba</button>
-        </div>
-        <div>
-            <h1 style="position:absolute;top: 1650px;left: 120px">Licitalas: </h1>
-            <input type="number" id="akt_licit_ar" style="position:absolute;top: 1678px;left: 270px;background-color: #797979;border: none">
-            <h3 style="position:absolute;top: 1660px;left: 475px">Ft</h3>
-            <h3 style="position:absolute;top: 1660px;left: 550px">Az aktualis ar: </h3>
-            <h3 id="akt_licit_ar" style="position:absolute;top: 1660px;left: 705px">2312312323 Ft</h3>
-        </div>
+  <h2><br>Ár: <label id="ar">50000</label>ft<br>  </h2>
+   <h2> Kategoria: <label id="kategoria">Járművek</label><br></h2>
+  <h3><br> Leírasras: <br><label id="leiras">Eladó egy Őrületes bringagép, acélvázas országúti kerékpár, keveset használt-megkímélt, a képeken látható állapotú. 
+  Felszereltsége: 3x7 sebességes Shimano váltás(pozícionált), rejtett bowdenes fékkarok, 
+  Mavic kerekek(peremes, nem szingós) Continental gumikkal, kulacstartó, alu-kormány-stucni-nyeregcső-hajtómű.</label><br></h3>
+ 
+ <br><button title="Licitálok a termékre" type="button"  onclick="alert('A termékre való licitálás megtörtént')">Licitálás</button><br>
+<br> <button title="Kosárba vele" type="button" onclick="alert('A terméket a kosárba helyezte' )">Kosárba</button><br>
+</div>
 
 
 
-    </div>
 
 </body>
-</html>
